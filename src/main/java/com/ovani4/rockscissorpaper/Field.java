@@ -12,16 +12,16 @@ public class Field {
     }
 
     public String getPlayerFigure() {
-        return playerFigure;
+        return this.playerFigure;
     }
 
     public String getPlayerPCFigure() {
-        return playerPCFigure;
+        return this.playerPCFigure;
     }
 
     public void showField(){
-        System.out.println("Figure Player one: " + playerFigure);
-        System.out.println("Figure Player two: " + playerPCFigure);
+        System.out.println("Figure Player User: " + playerFigure);
+        System.out.println("Figure Player PC: " + playerPCFigure);
     }
 
 }

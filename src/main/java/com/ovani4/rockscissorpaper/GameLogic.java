@@ -1,6 +1,7 @@
 package main.java.com.ovani4.rockscissorpaper;
 
 import javax.print.attribute.standard.PagesPerMinute;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GameLogic {
@@ -14,7 +15,8 @@ public class GameLogic {
             System.out.println("Enter correct figure value: ROCK, SCISSOR, PAPER");
             playerFigure = getUserInput();
         }
-        field.setPlayerOneFigure(getUserInput());
+
+        field.setPlayerOneFigure(playerFigure);
         field.setPlayerPCFigure(getPcFigure());
         field.showField();
         System.out.println("Winner is: " + identifyWinner());
@@ -55,9 +57,23 @@ public class GameLogic {
 
 
     private String identifyWinner(){
-        String figureValuePC = this.getPcFigure();
-        String figureValueUser = this.getUserInput();
-        return figureValuePC;
+        String result;
+        ArrayList<String> figureList = new ArrayList<>();
+        figureList.add("ROCK");
+        figureList.add("SCISSOR");
+        figureList.add("PAPER");
+
+        int index1 = figureList.indexOf(field.getPlayerFigure());
+        int index2 = figureList.indexOf(field.getPlayerPCFigure());
+
+        if (index1 == index2){
+            result = "it`s drawn";
+        }
+        if ((index1 - index2) == 1 || (index1 - index2) == -2){
+            result = "PC";
+        } else result = "User";
+
+        return result;
     }
 }
 
