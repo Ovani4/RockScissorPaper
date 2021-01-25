@@ -67,7 +67,7 @@ public class GameLogic {
         int index2 = figureList.indexOf(field.getPlayerPCFigure());
 
         if (index1 == index2){
-            result = "it`s drawn";
+            result = "it`s drawn"; //change
         }
         if ((index1 - index2) == 1 || (index1 - index2) == -2){
             result = "PC";
