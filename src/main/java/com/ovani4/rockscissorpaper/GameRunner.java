@@ -7,23 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameRunner {
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        ArrayList<Players> playerList = new ArrayList<> ();
-
-        for (int i = 0; i < 3; i++) {
-            System.out.println("Введи имя игрока");
-            Players player = new Players(br.readLine());
-            player.generateFigure();
-            playerList.add(player);
-        }
-        GameLogic gameLogic = new GameLogic(playerList);
-        for (Players player :
-                playerList) {
-            System.out.println("Игрок " + player.getName() +
-                    " показал фигуру: " + player.getFigure() +
-                    " Index " + player.getFigureIndex());
-        }
-        System.out.println(gameLogic);
+    public static void main(String[] args) {
+        GameLogic gl = new GameLogic();
+        gl.start();
     }
 }

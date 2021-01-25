@@ -29,22 +29,6 @@ public class Players {
     public Players(String name) {
         this.name = name;
     }
-
-    String generateFigure(){
-        figureIndex = (int) (10 * Math.random());
-
-        if (figureIndex <= 3){
-            figure = "Rock";
-            System.out.println(figureIndex);
-        }
-        if (figureIndex > 3 && figureIndex <=6){
-            figure = "Scissor";
-            System.out.println(figureIndex);
-        }
-        if (figureIndex > 6){
-            figure = "Paper";
-            System.out.println(figureIndex);
-        }
-        return figure;
-    }
 }
+
+
