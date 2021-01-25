@@ -1,6 +1,4 @@
 package main.java.com.ovani4.rockscissorpaper;
-
-import javax.print.attribute.standard.PagesPerMinute;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -67,7 +65,7 @@ public class GameLogic {
         int index2 = figureList.indexOf(field.getPlayerPCFigure());
 
         if (index1 == index2){
-            result = "it`s drawn"; //change
+            result = "it`s drawn";
         }
         if ((index1 - index2) == 1 || (index1 - index2) == -2){
             result = "PC";
