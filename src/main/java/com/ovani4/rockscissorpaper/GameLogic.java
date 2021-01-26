@@ -1,25 +1,25 @@
 package main.java.com.ovani4.rockscissorpaper;
-
-import javax.print.attribute.standard.PagesPerMinute;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GameLogic {
     private Field field = new Field();
     private Scanner scan = new Scanner(System.in);
 
+
     public void start(){
+
         System.out.println("Enter figure value");
-        String playerFigure = getUserInput();
-        while (!validateUserInput(playerFigure)){
+        String inputPlayerFigure = getUserInput();
+        while (!validateUserInput(inputPlayerFigure)){
             System.out.println("Enter correct figure value: ROCK, SCISSOR, PAPER");
-            playerFigure = getUserInput();
+            inputPlayerFigure = getUserInput();
         }
 
-        field.setPlayerOneFigure(playerFigure);
+        field.setPlayerOneFigure(GameFigure.valueOf(inputPlayerFigure));
         field.setPlayerPCFigure(getPcFigure());
         field.showField();
-        System.out.println("Winner is: " + identifyWinner());
+        System.out.println("Winner is: " + identifyWinner(field.getPlayerFigure() ,
+                field.getPlayerPCFigure()));
     }
 
 
@@ -28,18 +28,18 @@ public class GameLogic {
         return input;
     }
 
-    private String getPcFigure(){
-        String pcFigure = null;
+    private GameFigure getPcFigure(){
+        GameFigure pcFigure = null;
         int figureIndex = (int) (10 * Math.random());
 
         if (figureIndex <= 3){
-            pcFigure = "ROCK";
+            pcFigure = GameFigure.ROCK;
         }
         if (figureIndex > 3 && figureIndex <=6){
-            pcFigure = "SCISSOR";
+            pcFigure = GameFigure.SCISSOR;
         }
         if (figureIndex > 6){
-            pcFigure = "PAPER";
+            pcFigure = GameFigure.PAPER;
         }
         return pcFigure;
     }
@@ -56,23 +56,20 @@ public class GameLogic {
     }
 
 
-    private String identifyWinner(){
+    private String identifyWinner(GameFigure figureUser, GameFigure figurePC){
         String result;
-        ArrayList<String> figureList = new ArrayList<>();
-        figureList.add("ROCK");
-        figureList.add("SCISSOR");
-        figureList.add("PAPER");
 
-        int index1 = figureList.indexOf(field.getPlayerFigure());
-        int index2 = figureList.indexOf(field.getPlayerPCFigure());
-
-        if (index1 == index2){
-            result = "it`s drawn"; //change
+        if ((figureUser == GameFigure.ROCK && figurePC == GameFigure.SCISSOR) ||
+                (figureUser == GameFigure.PAPER && figurePC == GameFigure.ROCK) ||
+                (figureUser == GameFigure.SCISSOR && figurePC == GameFigure.PAPER)){
+            result = "User";
         }
-        if ((index1 - index2) == 1 || (index1 - index2) == -2){
+        else if (figurePC == figureUser){
+            result = "draw";
+        }
+        else {
             result = "PC";
-        } else result = "User";
-
+        }
         return result;
     }
 }

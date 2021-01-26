@@ -1,21 +1,21 @@
 package main.java.com.ovani4.rockscissorpaper;
 
 public class Field {
-    private String playerFigure;
-    private String playerPCFigure;
+    private GameFigure playerFigure;
+    private GameFigure playerPCFigure;
 
-    public void setPlayerOneFigure(String value){
+    public void setPlayerOneFigure(GameFigure value){
         this.playerFigure = value;
     }
-    public void setPlayerPCFigure(String value) {
+    public void setPlayerPCFigure(GameFigure value) {
         this.playerPCFigure = value;
     }
 
-    public String getPlayerFigure() {
+    public GameFigure getPlayerFigure() {
         return this.playerFigure;
     }
 
-    public String getPlayerPCFigure() {
+    public GameFigure getPlayerPCFigure() {
         return this.playerPCFigure;
     }
 
